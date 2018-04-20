@@ -2,7 +2,7 @@
 
 ## installation
 ```
-  git clone https://github.com/albronca/dotfiles.git ~/.vim
+  git clone https://github.com/albronca/.vim.git
   cd ~/.vim
   git submodule init
   git submodule update
