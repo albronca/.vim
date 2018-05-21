@@ -11,6 +11,7 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " always display the status line
 set autowrite     " automatically :write before running commands
+set updatetime=100
 
 " theme
 set background=dark
@@ -24,6 +25,9 @@ filetype plugin indent on
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 
+" reload
+nnoremap <Leader>r :source $MYVIMRC<CR>
+
 " ale
 let g:ale_set_highlights = 0
 
@@ -35,12 +39,12 @@ nnoremap <Leader>f :FZF<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-nnoremap <Leader>a :Ack! 
-vnoremap <Leader>a y:Ack! <C-R>"<CR>
+nnoremap <Leader>a :Ack!<Space>
+vnoremap <Leader>a y:Ack! '<C-R>"'<CR>
 
 " NERDTree
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-nnoremap <silent> <C-m> :NERDTreeFind<CR>
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>m :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
 
@@ -99,9 +103,8 @@ nnoremap <silent> <C-l> :call WinMove('l')<CR>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" sometimes it's ok to use a mouse
-nnoremap <Leader>mon :set mouse=a<CR>
-nnoremap <Leader>moff :set mouse=<CR>
+" change this if you're feeling mousey
+set mouse=
 
 " Show matching bracket or parenthesis
 set showmatch
