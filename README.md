@@ -3,9 +3,6 @@
 ## installation
 ```
   git clone https://github.com/albronca/.vim.git ~/.vim/
-  cd ~/.vim
-  git submodule init
-  git submodule update
 ```
 
 ## powerline symbols
