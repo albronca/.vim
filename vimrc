@@ -13,13 +13,38 @@ set laststatus=2  " always display the status line
 set autowrite     " automatically :write before running commands
 set updatetime=100
 
+" plugins
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+Plug 'mileszs/ack.vim'
+Plug 'w0rp/ale'
+Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+call plug#end()
+
 " theme
 set background=dark
 colorscheme gruvbox
 set guifont=Menlo\ Regular:h18
 set encoding=utf-8
-syntax on
-filetype plugin indent on
 
 " airline
 let g:airline_theme='gruvbox'
