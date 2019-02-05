@@ -24,12 +24,15 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'ElmCast/elm-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
-Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'Quramy/vim-js-pretty-template'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
@@ -142,8 +145,7 @@ set hlsearch
 let g:elm_format_autosave = 1
 
 " JSX
-let g:javascript_plugin_flow = 1
-let g:jsx_ext_required = 0
+let g:jsx_ext_required = 1
 
 " autocmd stuff
 if has("autocmd")
