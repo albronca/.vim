@@ -11,7 +11,9 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " always display the status line
 set autowrite     " automatically :write before running commands
+set noshowmode
 set updatetime=100
+set signcolumn=yes
 
 " plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -22,6 +24,7 @@ endif
 
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
+Plug 'alvan/vim-closetag'
 Plug 'ElmCast/elm-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'leafgarland/typescript-vim'
@@ -33,16 +36,17 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 call plug#end()
+
 
 " theme
 set background=dark
@@ -50,15 +54,20 @@ colorscheme gruvbox
 set guifont=Menlo\ Regular:h18
 set encoding=utf-8
 
-" airline
-let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
+" lightline
+let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
 
 " reload
 nnoremap <Leader>r :source $MYVIMRC<CR>
 
 " ale
 let g:ale_set_highlights = 0
+let g:ale_completion_enabled = 1
+autocmd FileType typescript nmap <silent> gd :ALEGoToDefinition<CR>
+autocmd FileType typescript nmap <buffer> <Leader>t :ALEHover<CR>
+
+" closetag
+let g:closetag_filenames = '*.html,*.jsx,*.tsx'
 
 " fzf
 set rtp+=/usr/local/opt/fzf
@@ -174,3 +183,4 @@ function! <SID>StripTrailingWhitespaces()
   let @/=_s
   call cursor(l, c)
 endfunction
+
