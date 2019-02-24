@@ -69,6 +69,10 @@ autocmd FileType typescript nmap <buffer> <Leader>t :ALEHover<CR>
 " closetag
 let g:closetag_filenames = '*.html,*.jsx,*.tsx'
 
+" delimitMate
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+
 " fzf
 set rtp+=/usr/local/opt/fzf
 nnoremap <Leader>f :FZF<CR>
@@ -165,7 +169,7 @@ if has("autocmd")
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
   " remove trailing whitespace on buffer write for specified filetypes
-  autocmd BufWritePre *.rb,*.js,*.jsx :call <SID>StripTrailingWhitespaces()
+  autocmd BufWritePre *.rb,*.js,*.jsx,*.ts,*.tsx :call <SID>StripTrailingWhitespaces()
 
   " open NERDTree if no file specified
   autocmd StdinReadPre * let s:std_in=1
