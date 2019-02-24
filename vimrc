@@ -51,7 +51,7 @@ call plug#end()
 " theme
 set background=dark
 colorscheme gruvbox
-set guifont=Menlo\ Regular:h18
+set guifont=Fira\ Code:h12
 set encoding=utf-8
 
 " lightline
@@ -85,6 +85,7 @@ nnoremap <Leader>a :Ack!<Space>
 vnoremap <Leader>a y:Ack! '<C-R>"'<CR>
 
 " NERDTree
+let g:NERDTreeNodeDelimiter = "\u00a0"
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>m :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
