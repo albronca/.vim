@@ -27,16 +27,18 @@ Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
 Plug 'ElmCast/elm-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'justinmk/vim-sneak'
 Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'Quramy/vim-js-pretty-template'
+Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
@@ -55,7 +57,11 @@ set guifont=Fira\ Code:h12
 set encoding=utf-8
 
 " lightline
-let g:lightline = { 'colorscheme': 'Tomorrow_Night' }
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
+
+" sneak
+let g:sneak#label = 1
 
 " reload
 nnoremap <Leader>r :source $MYVIMRC<CR>
@@ -65,9 +71,6 @@ let g:ale_set_highlights = 0
 let g:ale_completion_enabled = 1
 autocmd FileType typescript nmap <silent> gd :ALEGoToDefinition<CR>
 autocmd FileType typescript nmap <buffer> <Leader>t :ALEHover<CR>
-
-" closetag
-let g:closetag_filenames = '*.html,*.jsx,*.tsx'
 
 " delimitMate
 let delimitMate_expand_cr = 1
@@ -85,7 +88,6 @@ nnoremap <Leader>a :Ack!<Space>
 vnoremap <Leader>a y:Ack! '<C-R>"'<CR>
 
 " NERDTree
-let g:NERDTreeNodeDelimiter = "\u00a0"
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>m :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
@@ -122,6 +124,10 @@ set relativenumber
 " More natural splits
 set splitbelow
 set splitright
+
+" system copy/paster
+nmap <silent> <Leader>Y :.w !pbcopy<CR><CR>
+nmap <silent> <Leader>P :r !pbpaste<CR>
 
 " Quicker split navigation
 function! WinMove(key)
